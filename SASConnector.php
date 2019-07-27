@@ -58,9 +58,3 @@ class SASConnector{
 
 
 
-//test
-
-$api = new SASConnector('demo4.sasradius.com', 'admin', 'snonosystems');
-$api->login();
-$res = $api->post('index/user', []);
-print_r($res);
