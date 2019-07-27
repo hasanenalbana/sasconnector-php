@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 
 class SASConnector{
 
-    private $http;
+    private $client;
     private $host;
     private $username;
     private $password;
@@ -23,11 +23,11 @@ class SASConnector{
         $this->base_url = 'http://'.$this->host.'/admin/api/index.php/api/';
     }
 
-    public function post($url, $payload, $withAuth = true){
+    public function post($route, $payload, $withAuth = true){
 
         $json = json_encode($payload);
         $e_json = $this->aes::encrypt($json, 'abcdefghijuklmno0123456789012345');
-        $res = $this->client->request('POST',$this->base_url.$url,
+        $res = $this->client->request('POST',$this->base_url.$route,
             [
                 'headers' => [
                     'authorization' => 'Bearer '.$this->token
@@ -42,6 +42,21 @@ class SASConnector{
         else
             return -1;
     }
+
+    public function get($route, $withAuth = true){
+        $res = $this->client->request('GET',$this->base_url.$route,
+            [
+                'headers' => [
+                    'authorization' => 'Bearer '.$this->token
+                ]
+            ]
+        );
+        if ($res->getStatusCode() >= 200 && $res->getStatusCode()< 400)
+            return $res->getBody();
+        else
+            return -1;
+    }
+
 
 	public function login(){
         $payload['username'] = $this->username;
