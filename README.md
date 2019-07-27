@@ -1,2 +1,2 @@
 # sasconnector-php
-API connector for SAS Radius V4
+API connector for SAS Radius4
