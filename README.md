@@ -2,21 +2,21 @@
 API connector for SAS Radius 4
 
 __Installation__<br>
-Clone the git repository:<br>
+Clone the git repository:
 ```
 git clone https://github.com/hasanenalbana/sasconnector-php
 ```
 Install required libraries:
-```cd sasconnector-php<br>
-curl -sS https://getcomposer.org/installer | php<br>
-php composer.phar install<br>
+```cd sasconnector-php
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
 ````
 
 __Usage__
 ```
-require_once 'SASConnector.php';<br>
-$api = new SASConnector('demo4.sasradius.com', 'manager_username', 'manager_password');<br>
-$api->login();<br>
-$res = $api->post('index/user', []);<br>
-print_r(json_decode($res));<br>
+require_once 'SASConnector.php';
+$api = new SASConnector('demo4.sasradius.com', 'manager_username', 'manager_password');
+$api->login();
+$res = $api->post('index/user', []);
+print_r(json_decode($res));
 ```
